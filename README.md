@@ -1,32 +1,66 @@
 # 🍽️ Rotasi Siklus Makan
 
-Aplikasi web berbasis React untuk membantu mengelola dan merotasi daftar antrean makanan sehari-hari. Aplikasi ini memastikan Anda tidak perlu bingung memilih menu makan berikutnya dengan sistem rotasi otomatis dan manajemen antrean yang mudah.
+Aplikasi web untuk mengelola antrean pilihan makan dan memutarnya secara teratur. Masuk dengan Google untuk menyimpan antrean dan daftar pengecualian secara pribadi melalui Firebase.
 
-## ✨ Fitur Utama
+## ✨ Fitur
 
-*   **🔒 Autentikasi Google Terisolasi:** Pengguna dapat masuk menggunakan akun Google. Data antrean setiap pengguna disimpan secara terpisah dan aman (tidak saling tumpang tindih).
-*   **🔄 Sistem Rotasi Otomatis (Bawah ke Atas):** Tombol "SAYA MAKAN SEKARANG" akan mencabut menu yang berada di antrean paling bawah dan memindahkannya kembali ke posisi paling atas.
-*   **↩️ Undo Dinamis:** Tidak sengaja menekan rotasi? Terdapat tombol *Undo* (dengan indikator jumlah riwayat) untuk mengembalikan urutan antrean ke status sebelumnya.
-*   **📝 Manajemen Daftar Fleksibel:**
-    *   **Batch Add:** Tambahkan banyak menu sekaligus dengan menempelkan (*paste*) daftar multi-baris pada kolom input.
-    *   **Edit & Hapus:** Ubah teks item secara spesifik atau hapus item tunggal dari daftar.
-    *   **Hapus Semua:** Kosongkan seluruh daftar antrean secara instan (dilengkapi dengan sistem konfirmasi peringatan agar tidak tidak sengaja terhapus).
-*   **🖐️ Drag and Drop:** Sesuaikan urutan antrean secara manual hanya dengan menahan dan menggeser (*drag*) item ke posisi yang diinginkan.
-*   **⚡ Real-time Synchronization:** Didukung oleh pendengar aktif Firestore (`onSnapshot`), perubahan antrean di satu perangkat (misal: *smartphone*) akan otomatis dan seketika diperbarui di layar perangkat lain (misal: komputer) tanpa perlu *refresh*.
-*   **🚪 Logout Aman:** Dilengkapi dengan pop-up konfirmasi saat akan keluar dari akun.
+### Antrean menu
 
-## 🛠️ Teknologi yang Digunakan
+- **Rotasi menu:** tombol **Saya makan sekarang** memindahkan menu paling bawah ke posisi teratas.
+- **Undo rotasi:** kembalikan urutan antrean setelah rotasi.
+- **Tambah banyak menu sekaligus:** masukkan satu menu per baris.
+- **Peringatan keyword pengecualian:** aplikasi meminta konfirmasi jika menu baru mengandung keyword yang ada di daftar pengecualian. Pencocokan tidak membedakan huruf besar dan kecil.
+- **Edit menu:** ubah menu melalui dialog custom.
+- **Hapus menu:** hapus item dan pulihkan dalam beberapa detik melalui snackbar **Urungkan**.
+- **Hapus semua:** kosongkan antrean setelah konfirmasi.
+- **Drag and drop:** susun ulang antrean secara manual.
 
-*   **Frontend:** React.js (via Vite)
-*   **Backend & Database:** Firebase (Authentication & Cloud Firestore)
-*   **Deployment:** GitHub Pages
-*   **Environment:** GitHub Codespaces
+### Daftar pengecualian
 
-## 🚀 Cara Menjalankan Proyek (Development)
+- Tambahkan beberapa keyword atau catatan, satu item per baris.
+- Edit dan hapus item dengan tombol aksi bergaya konsisten.
+- Pulihkan item yang baru dihapus melalui snackbar **Urungkan**.
+- Popup mengunci scroll halaman utama, sementara daftar di dalamnya tetap dapat digulir.
 
-Proyek ini dikembangkan di dalam lingkungan **GitHub Codespaces**. Untuk menjalankannya secara lokal/di dalam *codespace*:
+### Antarmuka dan akun
 
-1. Pastikan Anda berada di *branch* utama (`main`).
-2. Instal semua dependensi:
-   ```bash
-   npm install
+- Masuk dengan Google; antrean dan pengecualian disimpan per pengguna di Cloud Firestore dan diperbarui secara real-time.
+- Dialog custom untuk mengedit menu, mengedit pengecualian, dan mengonfirmasi logout.
+- Tombol navigasi atas/bawah dan tombol floating pengecualian memudar saat halaman digulir, lalu muncul kembali setelah jeda.
+- Dialog dan kontrol mendukung penggunaan keyboard, termasuk Escape untuk menutup dialog yang dapat dibatalkan.
+
+## 🛠️ Teknologi
+
+- **Frontend:** React 19, Vite
+- **Drag and drop:** dnd-kit
+- **Autentikasi dan database:** Firebase Authentication dan Cloud Firestore
+- **Hosting:** GitHub Pages
+
+## 🚀 Menjalankan secara lokal
+
+Pastikan Node.js dan npm sudah terpasang, lalu jalankan:
+
+```bash
+npm install
+npm run dev
+```
+
+Pastikan konfigurasi Firebase di `src/firebase.js` sesuai dengan project yang digunakan.
+
+## ✅ Validasi dan build
+
+```bash
+npm run lint
+npm run build
+npm run preview
+```
+
+## 🚢 Deploy
+
+Deploy ke GitHub Pages dengan:
+
+```bash
+npm run deploy
+```
+
+Perintah ini membangun aplikasi lalu menerbitkan folder `dist`. Pastikan GitHub CLI atau Git sudah memiliki autentikasi dan izin untuk mengakses repository.
