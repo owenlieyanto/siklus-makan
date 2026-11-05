@@ -545,7 +545,7 @@ function App() {
           <section className="page-intro">
             <div>
               <span className="eyebrow">RUANG MAKAN PRIBADI</span>
-              <h1>Siklus makan</h1>
+              <h1>Siklus Makan</h1>
               <p>Kelola pilihan untuk giliran makan berikutnya.</p>
             </div>
             <span className="date-stamp">DAFTAR AKTIF <strong>{menuList.length.toString().padStart(2, "0")}</strong></span>
