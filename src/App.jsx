@@ -480,7 +480,7 @@ function App() {
   if (loading) {
     return (
       <main className="loading-screen" aria-live="polite">
-        <span className="brand-mark">S</span>
+        <img className="brand-mark" src={`${import.meta.env.BASE_URL}favicon.png`} alt="" aria-hidden="true" />
         <span className="loading-indicator" />
         <p>Menyiapkan siklus makan...</p>
       </main>
@@ -491,7 +491,7 @@ function App() {
     <div className={`app-shell ${user ? "is-signed-in" : "is-welcome"}`}>
       <header className="app-header">
         <div className="brand-lockup">
-          <span className="brand-mark" aria-hidden="true">S</span>
+          <img className="brand-mark" src={`${import.meta.env.BASE_URL}favicon.png`} alt="" aria-hidden="true" />
           <span className="brand-copy">
             <strong>Rotasi Makan</strong>
             <small>SIKLUS MAKAN PRIBADI</small>

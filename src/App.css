@@ -404,17 +404,11 @@ button {
 }
 
 .brand-mark {
-  display: grid;
+  display: block;
   width: 42px;
   height: 42px;
   flex: 0 0 auto;
-  place-items: center;
-  border-radius: 13px 13px 13px 4px;
-  background: var(--green-dark);
-  color: var(--lime);
-  font-family: var(--display);
-  font-size: 24px;
-  font-weight: 600;
+  object-fit: contain;
 }
 
 .brand-copy {
@@ -1392,7 +1386,6 @@ button {
 .loading-screen .brand-mark {
   width: 52px;
   height: 52px;
-  font-size: 28px;
 }
 
 .loading-screen p {
